@@ -1,0 +1,3 @@
+1. Create token for oAuth 2 in Google Cloud Platform
+2. Add clientId and client secret in Program.cs
+3. Save Token

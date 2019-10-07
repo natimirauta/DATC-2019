@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
-
+using System.Net;
 using Google.Apis.Drive.v3;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Util.Store;
+using Newtonsoft.Json.Linq;
+// missing libraries
 
 
 
@@ -47,9 +49,45 @@ namespace CSharp_GD_Int
 
             ).Result;
 
+            _token = credentials.Token.AccessToken;
             Console.WriteLine("Token is: " + credentials.Token.AccessToken);
 
         }
+
+        static void GetMyFiles(){
+            
+            var request = (HttpWebRequest)WebRequest.Create("https://www.googlepais.com/drive/v3/files");
+            request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + _token);
+
+                using (var response = request.GetResponse())
+                {
+
+                    using (Stream data = response.GetResponseStream())
+                    
+                    using (var reader = new StreamReader(data));
+                    {
+
+                        string text = reader.ReadToEnd();
+                        var myData = JObject.Parse(text);
+                        
+                        foreach(var file in myData["files"])
+                        {
+
+                            if(file["mimetype"].ToString() != "application/vnd.google-apps.folder")
+                            {
+
+                                Console.WriteLine("File name: " + file["name"]);
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+        }
+
 
         static void Main(string[] args)
         {
