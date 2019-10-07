@@ -56,7 +56,7 @@ namespace CSharp_GD_Int
 
         static void GetMyFiles(){
             
-            var request = (HttpWebRequest)WebRequest.Create("https://www.googlepais.com/drive/v3/files");
+            var request = (HttpWebRequest)WebRequest.Create("https://www.googleapis.com/drive/v3/files");
             request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + _token);
 
                 using (var response = request.GetResponse())
@@ -64,7 +64,7 @@ namespace CSharp_GD_Int
 
                     using (Stream data = response.GetResponseStream())
                     
-                    using (var reader = new StreamReader(data));
+                    using (var reader = new StreamReader(data))
                     {
 
                         string text = reader.ReadToEnd();
