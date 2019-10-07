@@ -50,7 +50,7 @@ namespace CSharp_GD_Int
             ).Result;
 
             _token = credentials.Token.AccessToken;
-            Console.WriteLine("Token is: " + credentials.Token.AccessToken);
+            Console.WriteLine("Token is: " + _token);
 
         }
 
@@ -70,10 +70,13 @@ namespace CSharp_GD_Int
                         string text = reader.ReadToEnd();
                         var myData = JObject.Parse(text);
                         
+                        // Console.WriteLine(text);
+
                         foreach(var file in myData["files"])
                         {
 
-                            if(file["mimetype"].ToString() != "application/vnd.google-apps.folder")
+                            // Console.WriteLine(file);
+                            if(file["mimeType"].ToString() != "application/vnd.google-apps.folder")
                             {
 
                                 Console.WriteLine("File name: " + file["name"]);
@@ -92,6 +95,7 @@ namespace CSharp_GD_Int
         static void Main(string[] args)
         {
             init();
+            GetMyFiles();
         }
 
     }
