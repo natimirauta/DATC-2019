@@ -50,6 +50,16 @@ namespace Services
             return students;
         }
 
+        public async Task<TableParse> ParseTable(CloudTable table)
+        {
+
+            // Demonstrate how to Read the updated entity using a point query 
+            Console.WriteLine("Reading the updated Entity.");
+            customer = await SamplesUtils.RetrieveEntityUsingPointQueryAsync(table, "Harp", "Walter");
+            Console.WriteLine();
+
+        }
+
         public async Task<TableResult> AddStudent(StudentEntity student)
         {
             if (studentsTable == null)
