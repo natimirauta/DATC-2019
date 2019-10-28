@@ -14,14 +14,14 @@ namespace Services
         public StudentsService()
         {
             string storageConnectionString = "DefaultEndpointsProtocol=https;"
-                            + "AccountName=datcdemoluni"
-                            + ";AccountKey=0iC24GOBAlLYUmGebdyEcmrMdxAMvwtKkLmfNy4mjF7dpigvoXGMU2VSWxEpDUXi5H3czl3+Z2TAYaqpY0nAhw=="
+                            + "AccountName=<YOUR ACCOUNT NAME>"
+                            + ";AccountKey=<YOUR ACCOUNT KEY>"
                             + ";EndpointSuffix=core.windows.net";
 
             var account = CloudStorageAccount.Parse(storageConnectionString);
             var tableClient = account.CreateCloudTableClient();
 
-            studentsTable = tableClient.GetTableReference("StudentiNAM");
+            studentsTable = tableClient.GetTableReference("<YOUR STUDENTS TABLE>");
         }
 
         public async Task Initialize()
