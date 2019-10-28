@@ -1,0 +1,3 @@
+# In Queues -> in Post StudentsController.cs -> Make Post send message in queue
+# In Read_Queue -> Read from queue -> Parse message from queue and update data in Azure table
+|-> make this a webjob
