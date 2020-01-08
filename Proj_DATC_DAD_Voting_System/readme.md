@@ -8,7 +8,7 @@ Cloud:
 + AWS: API and Lambdas
 
 Mobile:
-+ Andoird application sollution
++ Android application sollution
 
 Web:
 + Web application project
